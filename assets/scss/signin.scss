@@ -1,0 +1,53 @@
+#sign-in-form{
+    width : 50%;
+    display : flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    input{
+        height : 2.0em;
+        border : 2px solid rgba(0, 140, 255, 0.671);
+        padding : 0 5px;
+        border-radius : .5em;
+
+        &[type="submit"]{
+            cursor : pointer;
+            width : 40%;
+            font-size : 1.1em;
+        }
+    }
+
+    #social-log-in{
+        display: flex;
+        justify-content: space-evenly;
+
+        a{
+            padding : 20px;
+            font-size : 30px;
+            width : 40px;
+            text-align : center;
+            text-decoration : none;
+            margin : 5px;
+            color : white;
+            border-radius: .8em;
+            background-image: linear-gradient(to left, rgba(196, 193, 193, 0.596), rgba(121, 119, 119, 0.61));
+
+            &:hover{
+                transform: scale(1.1);
+            }
+
+            .fa-facebook-f{
+                color : #3B5998;
+            }
+
+            .fa-google{
+                color : #dd4b39;
+            }
+        }
+    }
+
+    h2{
+        color : rgb(51, 50, 50);
+    }
+}

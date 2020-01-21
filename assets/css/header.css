@@ -1,0 +1,23 @@
+header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+  header a {
+    text-decoration: none;
+    color: white;
+    font-size: 2em; }
+  header nav {
+    width: 70%; }
+    header nav ul {
+      padding: 0;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      width: 60%; }
+      header nav ul li {
+        list-style-type: none; }
+        header nav ul li:hover {
+          transform: scale(1.2); }
+        header nav ul li a {
+          font-size: 1.1em; }

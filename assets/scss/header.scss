@@ -1,0 +1,40 @@
+header{
+    height : 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    a{
+        text-decoration: none;
+        color: white;
+        font-size : 2em;
+    }
+
+    nav{
+        width : 70%;
+
+        ul{
+            padding : 0;
+            margin  : auto;
+            display: flex;
+            justify-content: space-between;
+            width : 60%;
+            
+            li{
+                list-style-type: none;
+                
+                &:hover{
+                    transform: scale(1.2);
+                }
+
+                a{
+                    font-size : 1.1em;  
+                }
+
+            }
+        }
+    }
+}
+
+
+
