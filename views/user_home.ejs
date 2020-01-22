@@ -1,17 +1,65 @@
+<link rel="stylesheet" href="/css/user_home.css">
+
 <title>
     <%= title %>
 </title>
 
 <main>
-    <section id="left-side-panel">
+    <section id="left-panel">
+        <form action="/posts/create" method="POST" id="new-post-form">
+            <input type="text" name="content" id="newPost" placeholder="What's happening?">
         
+            <button type="submit">
+                Post
+            </button>
+        </form>
     </section>
 
-    <section id="all-posts-container">
+    <div class="partition"></div>
 
+    <section id="center-panel">
+        <div id="center-panel-div">
+            <ul>
+                <% for( let post of all_posts) {%>
+                    <li>
+                        <h1>
+                            <%= post.user.name %>
+                        </h1>
+                        <div id="content-container">
+                            <%= post.content %>
+                        </div>
+                        <div id="reactions-container">
+                            <span> 
+                                <a href="">
+                                    <i class="far fa-thumbs-up"></i>
+                                </a> 
+                            </span>
+                            <span> 
+                                <a href="">
+                                    <i class="far fa-comment"></i>
+                                </a> 
+                            </span>
+                            <span> 
+                                <a href="">
+                                    <i class="fas fa-share-alt"></i>
+                                </a> 
+                            </span>
+                            <span> 
+                                <a href="">
+                                    <i class="fas fa-trash"></i>    
+                                </a>     
+                            </span>
+                        </div>
+                    </li>    
+                    <hr>
+                <%}%>
+            </ul>
+        </div>
     </section>
 
-    <section id="your-friends">
+    <div class="partition"></div>
 
+    <section id="right-panel">
+        
     </section>
 </main>

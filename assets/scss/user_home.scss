@@ -1,0 +1,98 @@
+*{
+    box-sizing: border-box;
+}
+
+main{
+    min-height : 100vh;
+    margin-bottom : 25px;   
+    background-image : linear-gradient(to bottom, rgb(155, 153, 153), rgb(66, 65, 65));
+    display : flex;
+    padding  : 1%;
+    border-radius : 2em;
+
+    section{
+        flex: 1;
+        display : flex;
+        flex-direction : column;
+        justify-content: flex-start;
+        align-items : center;
+    }
+
+    .partition{
+        border : 2px solid grey;
+        margin : 0px 3px;
+    }
+
+    ul{
+        padding : 0;
+
+        li{
+            list-style-type : none;
+            padding : 3px;
+        }
+    }
+}
+
+
+
+#new-post-form{
+    display: flex;
+    flex-direction : column;
+    justify-content: flex-start;
+    align-items: center;  
+    min-height : 70%;
+
+    
+    #newPost{
+        background-color: transparent;
+        border : 2px solid white;
+        border-radius : 1em;
+        padding : 10px; 
+        color : white;
+        font-size : 1.3em;
+        width : 18em;
+        height : 6em;
+        margin-bottom : 20px;
+
+        &::placeholder{
+            color : white;
+            font-size : 1.3em;
+            font-weight : bold;
+        }
+    }
+
+    button[type="submit"]{
+        border-radius : 1em;
+        width : 30%;
+        font-size : 1.2em;
+    }
+}
+
+#center-panel-div{
+    max-height : 99%;
+    width : 100%;
+    overflow-y: hidden;
+
+    #content-container{
+        min-height : 50px;
+        padding-left : 20px;
+    }
+
+    #reactions-container{
+        display : flex;
+        justify-content: space-around;
+        align-items: center;
+
+        span{
+            &:hover{
+                transform: scale(1.2);
+            }
+        }
+
+        a{
+            color : white;
+            font-size : 1.3em;
+        }
+    }
+}
+

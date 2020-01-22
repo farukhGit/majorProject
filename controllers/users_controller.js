@@ -1,8 +1,28 @@
 const User = require('../models/user_schema');
+const Post = require('../models/posts_schema');
 
 module.exports.userHome = function(req, res){
-    return res.render('user_home', {
-        title : 'User | Home'
+    // Post.find({}, function(err, posts){
+    //     if(err){
+    //         console.log('Error finding the post!');
+    //         return;
+    //     }
+    //     return res.render('user_home', {
+    //         title : 'User | Home',
+    //         all_posts : posts
+    //     });
+    // })
+    Post.find({}).
+    populate('user').
+    exec(function(err, posts){
+        if(err){
+            console.log('Error finding posts!');
+            return;
+        }
+        return res.render('user_home', {
+            title : 'User | Home',
+            all_posts : posts
+        });
     });
 }
 
@@ -46,7 +66,7 @@ module.exports.create = function(req, res){
 
 module.exports.createSession = function(req, res){
 
-    return res.redirect('/users/profile');
+    return res.redirect('/users/user_home');
 }
 
 module.exports.destroySession = function(req, res){
