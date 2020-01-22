@@ -4,8 +4,12 @@
     <%= title %>
 </title>
 
-<div id="reg-form">    
+<% if(!locals.user){%>
+    <div id="reg-form">    
         <%- include('_signin'); %>
         <div id="reg-form-partition"></div>
         <%- include('_signup'); %>
-</div>
+    </div>
+<%}else{%>
+    <%- include('profile'); %>
+<%} %>

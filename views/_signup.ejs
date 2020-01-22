@@ -3,11 +3,11 @@
 <div id="sign-up-container">
     <h2> Register with E-mail </h2 >
 
-    <form action="" id="sign-up-form">
-        <input type="text" name="username" id="" placeholder="Username" required>
-        <input type="email" name="email" id="" placeholder="E-mail" required>
-        <input type="password" name="password" id="" placeholder="Password" required>
-        <input type="password" name="confirm-password" id="" placeholder="Confirm Password" required>
+    <form action="/users/create" id="sign-up-form" method="POST">
+        <input type="text" name="username" id="name" placeholder="Username" required>
+        <input type="email" name="email" id="email" placeholder="E-mail" required>
+        <input type="password" name="password" id="password" placeholder="Password" required>
+        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" required>
         <input type="submit" value="Sign Up">
     </form>
 </div>

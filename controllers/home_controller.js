@@ -1,17 +1,11 @@
 module.exports.home = function(req, res){
-    return res.render('home', {
-        title : 'Home'
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
+
+    return res.render('welcome_page', {
+        title : 'Social Media Website'
     });
 }
 
-module.exports.signUp = function(req, res){
-    return res.render('_signup', {
-        title : 'LOGO | Sign Up'
-    })
-}
 
-module.exports.signIn = function(req, res){
-    return res.render('_signin', {
-        title : 'LOGO | Sign In'
-    })
-}
