@@ -19,11 +19,12 @@ button[type="submit"], input[type="submit"]{
     }
 }
 
-input[type="text"]{
+input[type="text"], input[type="email"]{
     border : none;
     height : 3em;  
     padding : 0px 5px;
-    border-radius : 1em;  
+    border-radius : 1em; 
+    margin : 5px 0px 10px; 
 
     &:focus{
         outline : none;

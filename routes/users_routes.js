@@ -5,7 +5,8 @@ const usersController = require('../controllers/users_controller')
 
 
 router.get('/user_home', passport.checkAuthentication, usersController.userHome);
-router.get('/profile', passport.checkAuthentication, usersController.profile);
+router.get('/profile/:id', passport.checkAuthentication, usersController.profile);
+router.post('/update/:id', passport.checkAuthentication, usersController.update);
 router.post('/create', usersController.create);
 router.post('/createSession', passport.authenticate('local', {
     failureRedirect : '/'

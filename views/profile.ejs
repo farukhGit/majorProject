@@ -1,13 +1,52 @@
+<link rel="stylesheet" href="/css/profile.css">
+
 <title>
     <%= title %>
 </title>
-
 <h1>
-    User Profile View
-    <p>
-        <%= user.name %>
-    </p>
-    <p>
-        <%= user.email %>
-    </p>
+    <%= profile_user.name %> | Profile 
 </h1>
+
+<div id="profile-view-div">
+    <div id="left-info-update-panel">
+        <h1>
+            <p>
+                Name : 
+                <%= profile_user.name %>
+            </p>
+            <p>
+                E-mail : 
+                <%= profile_user.email %>
+            </p>
+        </h1>
+        <!-- create check to see if current user is same as profile-user -->
+        <% if(locals.user.id == profile_user.id){%>
+            <form action="/users/update/<%= profile_user._id %>" id="update-form" method="POST">
+                <input type="text" name="updateName" placeholder="<%= profile_user.name %>" required>
+                <input type="email" name="updateEmail" placeholder="<%= profile_user.email %>" required>
+                <input type="submit" value="Update">
+            </form>
+        <%} %>
+    </div>
+
+    <div id="user-posts-div">
+        <ul id="posts-list">
+            <% for(p of users_posts){%>
+                <li>
+                    <p>
+                        <%= p.content %>
+                    </p>
+                    <p>
+                        <ul id="comments-list">
+                            <% for(comment of p.comments){%>
+                                <li>
+                                    <%= comment.content %>
+                                </li>    
+                            <%} %>
+                        </ul>
+                    </p>
+                </li>    
+            <%} %>
+        </ul>
+    </div>
+</div>

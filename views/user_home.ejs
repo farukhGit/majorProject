@@ -20,86 +20,8 @@
     <section id="center-panel">
         <div id="center-panel-div">
             <ul>
-                <% for( let post of all_posts) {%>
-                    <li>
-                        <h1>
-                            <%= post.user.name %>
-                        </h1>
-                        <div id="content-container">
-                            <%= post.content %>
-                        </div>
-                        <div id="reactions-container">
-                            <span> 
-                                <a href="">
-                                    <i class="far fa-thumbs-up"></i>
-                                </a> 
-                            </span>
-                            <span> 
-                                <a href="" id="comment-btn">
-                                    <i class="far fa-comment"></i>
-                                </a> 
-                            </span>
-                            <span> 
-                                <a href="">
-                                    <i class="fas fa-share-alt"></i>
-                                </a> 
-                            </span>
-                            <span> 
-                                <a href="">
-                                    <i class="fas fa-trash"></i>    
-                                </a>     
-                            </span>
-                        </div>
-                        <% if(locals.user){ %>
-                            <div id="new-comment-div">
-                                <form action="/comments/create" method="POST" id="comment-form">
-                                    <input type="text" placeholder="Comment" name="content" required>
-                                    <input type="hidden" name="post" value="<%= post._id %>">  
-                                    <button type="submit">Comment</button>
-                                </form>
-                            </div>
-                        <% } %>
-
-                        <div id="comments-container">
-                            <ul id="comment_post_id_<%= post._id %>">
-                                <% for(comment of post.comments){%>
-                                    <li id="comment-details">
-                                        <small>
-                                            <%= locals.user.name %>
-                                            <p>
-                                                <%= comment.content %>
-                                            </p>
-                                        </small>
-                                        
-                                    
-                                            <div id="comments-reactions-container">
-                                                <span> 
-                                                    <a href="">
-                                                        <i class="far fa-thumbs-up"></i>
-                                                    </a> 
-                                                </span>
-                                                <span> 
-                                                    <a href="" id="comment-btn">
-                                                        <i class="far fa-comment"></i>
-                                                    </a> 
-                                                </span>
-                                                <span> 
-                                                    <a href="">
-                                                        <i class="fas fa-share-alt"></i>
-                                                    </a> 
-                                                </span>
-                                                <span> 
-                                                    <a href="">
-                                                        <i class="fas fa-trash"></i>    
-                                                    </a>     
-                                                </span>
-                                            </div>
-                                        
-                                    </li>
-                                <%} %>
-                            </ul>
-                        </div>
-                    </li>    
+                <% for( post of all_posts) {%>
+                    <%- include('_post') -%>    
                                                         <hr>
                 <%}%>
             </ul>
@@ -109,6 +31,16 @@
     <div class="partition"></div>
 
     <section id="right-panel">
-        
+        <div id="right-panel-div">
+            <ul id="users-list">
+                <% for(user of all_users_list){%>
+                    <li>
+                        <a href="/users/profile/<%= user.id %>">
+                            <%= user.name %>
+                        </a>
+                    </li>    
+                <%}%>
+            </ul>
+        </div>
     </section>
 </main>

@@ -1,32 +1,56 @@
 const User = require('../models/user_schema');
 const Post = require('../models/posts_schema');
 
-module.exports.userHome = function(req, res){
-    Post.find({})
-    .populate('user')
-    .populate({
-        path : 'comments',
-        populate : {
-            path : 'user'
-        }
-    })
-    .exec(function(err, posts){
-        if(err){
-            console.log('*Error finding posts!*');
-            return;
-        }
+module.exports.userHome = async function(req, res){
+    try {
+        let posts = await Post.find({})
+                .populate('user')
+                .populate({
+                    path : 'comments',
+                    populate : {
+                        path : 'user'
+                    }
+                });
 
+        let users = await User.find({});         
+        
         return res.render('user_home', {
             title : 'User | Home',
-            all_posts : posts
+            all_posts : posts,
+            all_users_list : users
         });
-    });
+    } catch (error) {
+        console.log('Error : ', err);
+        return;
+    }
 }
 
-module.exports.profile = function(req, res){
-    return res.render('profile', {
-        title : 'Profile'
-    });
+module.exports.profile = async function(req, res){
+    try {
+        let user = await User.findById(req.params.id);
+
+        let posts = await Post.find({user : user._id}).populate('comments');
+        
+        return res.render('profile', {
+            title : 'Profile',
+            users_posts : posts,
+            profile_user : user
+        });
+        
+    } catch (error) {
+        console.log('Error', err);
+        return;
+    }
+}
+
+module.exports.update = (req, res)=>{
+    if(req.user.id == req.params.id){
+        User.findByIdAndUpdate(req.params.id, {name : req.body.updateName, email : req.body.updateEmail}, (err, user)=>{
+            return res.redirect('/users/user_home');
+        })
+    }else{
+        res.status(401).send('Unauthorized Access');
+    }
 }
 
 module.exports.create = function(req, res){

@@ -1,0 +1,34 @@
+<li id="comment-details">
+    <small>
+        <%= comment.user.name %>
+        <p>
+            <%= comment.content %>
+        </p>
+    </small>
+    
+
+        <div id="comments-reactions-container">
+            <span> 
+                <a href="">
+                    <i class="far fa-thumbs-up"></i>
+                </a> 
+            </span>
+            <span> 
+                <a href="" id="comment-btn">
+                    <i class="far fa-comment"></i>
+                </a> 
+            </span>
+            <span> 
+                <a href="">
+                    <i class="fas fa-share-alt"></i>
+                </a> 
+            </span>
+            <span> 
+                <% if(locals.user && locals.user.id == comment.user._id){ %>
+                    <a href="/comments/deleteComment/<%= comment.id %>">
+                        <i class="fas fa-trash"></i>    
+                    </a>     
+                <%}%>
+            </span>
+        </div>
+</li>
