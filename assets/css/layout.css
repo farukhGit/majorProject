@@ -3,3 +3,22 @@ body {
   margin: 0;
   color: white;
   background-image: linear-gradient(to left, #79797a, #363636, #080808); }
+
+button[type="submit"], input[type="submit"] {
+  cursor: pointer;
+  font-weight: 300;
+  font-size: .9em;
+  padding: 5px;
+  border: none;
+  border-radius: 1em;
+  min-width: 8em; }
+  button[type="submit"]:hover, input[type="submit"]:hover {
+    transform: scale(1.1); }
+
+input[type="text"] {
+  border: none;
+  height: 3em;
+  padding: 0px 5px;
+  border-radius: 1em; }
+  input[type="text"]:focus {
+    outline: none; }

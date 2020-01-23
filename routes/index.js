@@ -7,5 +7,6 @@ router.get('/', homeController.home);
 // routes for users/* requests
 router.use('/users', require('./users_routes'));
 router.use('/posts', require('./posts_routes'));
+router.use('/comments', require('./comments_route'));
 
 module.exports = router;

@@ -7,9 +7,14 @@ main {
   background-image: linear-gradient(to bottom, #9b9999, #424141);
   display: flex;
   padding: 1%;
-  border-radius: 2em; }
-  main section {
-    flex: 1;
+  border-radius: 1em; }
+  main #right-panel {
+    width: 20%; }
+  main #left-panel {
+    width: 30%; }
+  main #center-panel {
+    width: 50%; }
+  main #left-panel, main #right-panel, main #center-panel {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -24,31 +29,25 @@ main {
       padding: 3px; }
 
 #new-post-form {
+  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  min-height: 70%; }
-  #new-post-form #newPost {
+  min-height: 80%;
+  width: 28%; }
+  #new-post-form input[type="text"] {
+    width: 100%;
+    min-height: 8em;
     background-color: transparent;
     border: 2px solid white;
-    border-radius: 1em;
-    padding: 10px;
     color: white;
-    font-size: 1.3em;
-    width: 18em;
-    height: 6em;
-    margin-bottom: 20px; }
-    #new-post-form #newPost::placeholder {
-      color: white;
-      font-size: 1.3em;
-      font-weight: bold; }
-  #new-post-form button[type="submit"] {
-    border-radius: 1em;
-    width: 30%;
-    font-size: 1.2em; }
+    margin: 3px 0px 8px 0px; }
+    #new-post-form input[type="text"]::placeholder {
+      color: white; }
 
 #center-panel-div {
+  flex-grow: 2;
   max-height: 99%;
   width: 100%;
   overflow-y: hidden; }
@@ -63,4 +62,32 @@ main {
       transform: scale(1.2); }
     #center-panel-div #reactions-container a {
       color: white;
-      font-size: 1.3em; }
+      font-size: 1.5em; }
+  #center-panel-div #comments-reactions-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center; }
+    #center-panel-div #comments-reactions-container span:hover {
+      transform: scale(1.2); }
+    #center-panel-div #comments-reactions-container a {
+      color: white;
+      font-size: 1.1em; }
+
+#new-comment-div #comment-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px; }
+  #new-comment-div #comment-form input[type="text"] {
+    width: 70%;
+    margin: 0px 10px; }
+
+#comment-details {
+  padding: 0px 0px 0px 50px;
+  display: flex;
+  justify-content: space-between; }
+  #comment-details small {
+    margin: 0px 30px 0px 0px; }
+  #comment-details #comments-reactions-container {
+    width: 30%;
+    margin-right: 60px; }

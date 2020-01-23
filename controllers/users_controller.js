@@ -2,23 +2,20 @@ const User = require('../models/user_schema');
 const Post = require('../models/posts_schema');
 
 module.exports.userHome = function(req, res){
-    // Post.find({}, function(err, posts){
-    //     if(err){
-    //         console.log('Error finding the post!');
-    //         return;
-    //     }
-    //     return res.render('user_home', {
-    //         title : 'User | Home',
-    //         all_posts : posts
-    //     });
-    // })
-    Post.find({}).
-    populate('user').
-    exec(function(err, posts){
+    Post.find({})
+    .populate('user')
+    .populate({
+        path : 'comments',
+        populate : {
+            path : 'user'
+        }
+    })
+    .exec(function(err, posts){
         if(err){
-            console.log('Error finding posts!');
+            console.log('*Error finding posts!*');
             return;
         }
+
         return res.render('user_home', {
             title : 'User | Home',
             all_posts : posts
