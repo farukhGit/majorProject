@@ -8,6 +8,9 @@
         <%= title %>
     </title>
     <script src="https://kit.fontawesome.com/3bb14eca3e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
@@ -20,5 +23,35 @@
     
     <%- include('_footer'); %>
     <%- script %>
+    <script>
+        <% if(flash.success && flash.success.length > 0){%>
+            new Noty({
+                type : 'success',
+                theme : 'metroui',
+                layout : 'topCenter',
+                text: '<%= flash.success %>',
+                timeout : 1500
+            }).show();     
+        <%}%>
+        <% if(flash.error && flash.error.length > 0){ %>
+            new Noty({
+                type : 'error',
+                theme : 'metroui',
+                layout : 'topCenter',
+                text: '<%= flash.error %>',
+                timeout : 1500
+            }).show();     
+        <%} %>
+        <% if(flash.warning && flash.warning.length > 0){ %>
+            new Noty({
+                type : 'warning',
+                theme : 'metroui',
+                layout : 'topCenter',
+                text: '<%= flash.warning %>',
+                timeout : 1500
+            }).show();     
+        <%} %>
+
+    </script>
 </body>
 </html>

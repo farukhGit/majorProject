@@ -8,11 +8,12 @@ module.exports.create = function(req, res){
             user : req.user._id
         }, function(err, post){
             
+            req.flash('success', 'Post published!');
             return res.redirect('back');
         });
     } catch (error) {
-        console.log('Error : ', err);
-        return;
+        req.flash('error', err);
+        return res.redirect('back');
     }   
 }
 
@@ -23,13 +24,15 @@ module.exports.destroy = async (req, res)=>{
         if(req.user.id == post.user){
             post.remove();
             Comment.deleteMany({post : req.params.id}); 
+            req.flash('warning', 'Post deleted!');
             return res.redirect('back');
         }else{
+            req.flash('error', 'Unauthorized Action!');
             return res.redirect('user_home');
         }
 
     } catch (error) {
-        console.log('Error : ', err);
+        req.flash('error', err);
         return;
     }
 }
