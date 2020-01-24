@@ -29,4 +29,5 @@
     margin-bottom: 30px;
     border-bottom: 1px solid white; }
     #user-posts-div #posts-list li #comments-list li {
-      border: none; }
+      border: none;
+      font-size: smaller; }
